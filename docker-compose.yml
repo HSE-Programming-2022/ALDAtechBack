@@ -10,7 +10,7 @@ services:
       - 5000:5000
       - 5001:5001
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORT=https://+:5001
       - ASPNETCORE_URLS=http://+:5000
       - ASPNETCORE_Kestrel__Certificates__Default__Password=ssl_pass
