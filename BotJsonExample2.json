@@ -1,0 +1,155 @@
+{
+	"_id": "628f5cb0b69fc0acc187a5f3",
+	"_user": "628f469a8139cf1b4bcb509b",
+	"_bot": "5001678276:AAH0MgT6aPNR7pkOGeD5eYFxEsJI3sgE4WA",
+	"name": "Flow 1",
+	"questions": [
+	  {
+		"id": "e2bd2126-76ea-458c-8967-20930d8d02e9",
+		"name": "statement",
+		"type": "statement",
+		"label": "Welcome to BotPenguin. I am here to help you.",
+		"icon": "",
+		"example": "",
+		"required": false,
+		"skip": false,
+		"back": false,
+		"delay": 1,
+		"message": {
+		  "error": "",
+		  "success": "",
+		  "unavailable": ""
+		},
+		"validation": false,
+		"next": {
+		  "type": "question",
+		  "target": ""
+		},
+		"_id": "628f5cb0b69fc0acc187a5f4",
+		"options": [],
+		"links": []
+	  },
+	  {
+		"id": "2b70bf02-a6c5-4c67-b4bb-372e7a67dcba",
+		"name": "email",
+		"type": "email",
+		"label": "What is your email address?",
+		"icon": "",
+		"example": "",
+		"required": true,
+		"skip": false,
+		"back": false,
+		"delay": 1,
+		"message": {
+		  "error": "invalid email address",
+		  "success": "",
+		  "unavailable": ""
+		},
+		"validation": true,
+		"next": {
+		  "type": "question",
+		  "target": ""
+		},
+		"_id": "628f5cb0b69fc0acc187a5f5",
+		"options": [],
+		"links": []
+	  },
+	  {
+		"id": "6b042ad5-467b-4f0c-aac5-d3b643ccb9e8",
+		"name": "phone",
+		"type": "phone",
+		"label": "Please provide your phone number",
+		"icon": "",
+		"example": "",
+		"required": true,
+		"skip": false,
+		"back": false,
+		"delay": 1,
+		"message": {
+		  "error": "invalid phone number",
+		  "success": "",
+		  "unavailable": ""
+		},
+		"validation": true,
+		"next": {
+		  "type": "question",
+		  "target": ""
+		},
+		"_id": "628f5cb0b69fc0acc187a5f6",
+		"options": [],
+		"links": []
+	  },
+	  {
+		"id": "bb509cdd-bf98-4300-92c6-8bf48f10477f",
+		"type": "statement",
+		"name": "statement",
+		"label": "Welcome to BotPenguin. I am here to help you.",
+		"required": false,
+		"skip": false,
+		"back": false,
+		"delay": 1,
+		"validation": false,
+		"next": {}
+	  },
+	  {
+		"id": "31ff5c36-cc08-47c5-8471-26b4e783670e",
+		"type": "button",
+		"name": "button",
+		"label": "Please select one from the given options",
+		"required": true,
+		"skip": false,
+		"back": false,
+		"delay": 1,
+		"validation": false,
+		"next": {},
+		"options": [
+		  {
+			"id": "88810055-8045-4810-a513-983bfc077f09",
+			"type": "button",
+			"value": "Option 1",
+			"next": {}
+		  },
+		  {
+			"id": "c0e758f9-b636-4c22-8d7d-bf39485a05b6",
+			"type": "button",
+			"value": "Option 2",
+			"next": {}
+		  }
+		]
+	  },
+	  {
+		"id": "a05854c2-0949-4777-bd7d-a2406b92e65a",
+		"type": "button",
+		"name": "button",
+		"label": "Please select one from the given options",
+		"required": true,
+		"skip": false,
+		"back": false,
+		"delay": 1,
+		"validation": false,
+		"next": {},
+		"options": [
+		  {
+			"id": "8e11b0c4-39ef-4231-b64a-68c24d58f96a",
+			"type": "button",
+			"value": "Option 1",
+			"next": {
+			  "type": "question",
+			  "target": "bb509cdd-bf98-4300-92c6-8bf48f10477f"
+			}
+		  },
+		  {
+			"id": "5fcf2968-59ab-4860-bbb1-ccf261be6aef",
+			"type": "button",
+			"value": "Option 2",
+			"next": {
+			  "type": "question",
+			  "target": "31ff5c36-cc08-47c5-8471-26b4e783670e"
+			}
+		  }
+		]
+	  }
+	],
+	"description": "",
+	"__v": 0
+  }
