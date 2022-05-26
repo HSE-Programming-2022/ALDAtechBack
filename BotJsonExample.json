@@ -1,0 +1,880 @@
+[
+  "set/bot",
+  {
+    "recovered": {},
+    "mailing": {},
+    "timezone": "Europe/Moscow",
+    "description": "Пример чат-бота с простыми кнопками и развилками",
+    "alertMail": "mail@example.com",
+    "deactivated": false,
+    "notPaid": false,
+    "withProblems": false,
+    "usedesk_company_id": "",
+    "menu": [
+      {
+        "title": "Главное меню",
+        "ref": "nd0-ASYTP",
+        "command": "/start"
+      },
+      {
+        "title": "О нас",
+        "ref": "e-OYkOUGo",
+        "command": "/about"
+      },
+      {
+        "title": "Адреса",
+        "ref": "82aaVHkI4",
+        "command": "/addresses"
+      },
+      {
+        "title": "Товары",
+        "ref": "uRRaB85NLv",
+        "command": "/cake"
+      }
+    ],
+    "platforms": [
+      "vk"
+    ],
+    "limitMailing": false,
+    "completedComponentCount": 0,
+    "testers": [],
+    "variables": [],
+    "mcGoal": null,
+    "messageStorageDuration": null,
+    "botSessionStorageDuration": null,
+    "disableButtonTrim": false,
+    "_id": "6282782aa5e9502837888362",
+    "title": "Новый бот",
+    "owner": "628277e785be0b28130b1187",
+    "users": [],
+    "screens": {
+      "welcome": {
+        "title": "Стартовый экран",
+        "position": {
+          "left": 229,
+          "top": 189
+        },
+        "hidden": false,
+        "privacy": "unlock",
+        "invalid": false,
+        "_id": "welcome",
+        "id": "welcome",
+        "components": [
+          {
+            "id": "cI_xOWa_H",
+            "name": "Message",
+            "props": {
+              "children": "Привет! Я чат-бот супермагазина!\n\nРад видеть тебя, {{this_user.fullname}}!",
+              "formatedChildren": "Привет! Я чат-бот супермагазина!\n\nРад видеть тебя, {{this_user.full_name}}!",
+              "linksPreview": true,
+              "compileLinks": true
+            },
+            "flags": {
+              "typing": "",
+              "notyping": false,
+              "no_hide": false,
+              "platform": [],
+              "skipped": false,
+              "end_session": false
+            }
+          },
+          {
+            "id": "gITsihbgA",
+            "name": "Forward",
+            "props": {
+              "ref": "nd0-ASYTP"
+            },
+            "flags": {
+              "stop": false,
+              "platform": [],
+              "skipped": false
+            }
+          },
+          {
+            "id": "ZmwRUYcT4",
+            "name": "Message",
+            "props": {
+              "children": "",
+              "formatedChildren": "hvjvjvj",
+              "linksPreview": true,
+              "compileLinks": false,
+              "outPlatformId": "",
+              "protectContent": false,
+              "facebookMessageTag": ""
+            },
+            "flags": {
+              "typing": "",
+              "notyping": false,
+              "no_hide": true,
+              "platform": [],
+              "skipped": false,
+              "end_session": false
+            }
+          }
+        ]
+      },
+      "nd0-ASYTP": {
+        "title": "Главное меню",
+        "position": {
+          "left": 765,
+          "top": 385
+        },
+        "hidden": false,
+        "privacy": "unlock",
+        "invalid": false,
+        "_id": "nd0-ASYTP",
+        "id": "nd0-ASYTP",
+        "components": [
+          {
+            "id": "B1mute32C",
+            "name": "HintButtonGroup",
+            "props": {
+              "children": [
+                {
+                  "id": "i1Vg4I3YS",
+                  "name": "Message",
+                  "props": {
+                    "children": "Куда перейти?",
+                    "formatedChildren": "хай",
+                    "linksPreview": true,
+                    "compileLinks": false
+                  },
+                  "flags": {
+                    "typing": "",
+                    "notyping": false,
+                    "no_hide": false,
+                    "platform": [],
+                    "skipped": false,
+                    "end_session": false
+                  }
+                },
+                {
+                  "id": "vjztBaQZwjOGiG8tF8XqT",
+                  "name": "ButtonRow",
+                  "props": {
+                    "children": [
+                      {
+                        "id": "K4ohaTzNb",
+                        "name": "Button",
+                        "props": {
+                          "children": "Наши товары",
+                          "request": ""
+                        },
+                        "flags": {
+                          "platform": [],
+                          "skipped": false
+                        }
+                      }
+                    ]
+                  },
+                  "flags": {
+                    "platform": [],
+                    "skipped": false
+                  }
+                },
+                {
+                  "id": "k1GkWMD0aH",
+                  "name": "ButtonRow",
+                  "props": {
+                    "children": [
+                      {
+                        "id": "Wf8AVNOnM",
+                        "name": "Button",
+                        "props": {
+                          "children": "Адреса",
+                          "request": "",
+                          "color": "default",
+                          "typeVK": "text",
+                          "typeVKPay": "",
+                          "idVK": "",
+                          "aidVK": "",
+                          "amountVK": 1,
+                          "descriptionVKPay": ""
+                        },
+                        "flags": {
+                          "platform": [],
+                          "skipped": false
+                        }
+                      },
+                      {
+                        "id": "Vm8hWCUaG",
+                        "name": "Button",
+                        "props": {
+                          "children": "О нас",
+                          "request": "",
+                          "color": "default",
+                          "typeVK": "text",
+                          "typeVKPay": "",
+                          "idVK": "",
+                          "aidVK": "",
+                          "amountVK": 1,
+                          "descriptionVKPay": ""
+                        },
+                        "flags": {
+                          "platform": [],
+                          "skipped": false
+                        }
+                      }
+                    ]
+                  },
+                  "flags": {
+                    "platform": [],
+                    "skipped": false
+                  }
+                },
+                {
+                  "id": "z9d-tp7WX",
+                  "name": "ButtonRow",
+                  "props": {
+                    "children": [
+                      {
+                        "id": "msfum_R46OrNabM1YQc0q",
+                        "name": "Button",
+                        "props": {
+                          "method": "GET",
+                          "parser": "json",
+                          "headers": {
+                            "User-Agent": "Botmother/1.7 (+https://botmother.com)",
+                            "Content-Type": "application/json"
+                          },
+                          "allowAuth": false,
+                          "color": "default",
+                          "typeVK": "text",
+                          "amountVK": 1,
+                          "notAutoAnswerCb": false,
+                          "sendUrl": false,
+                          "children": "",
+                          "ref": "",
+                          "href": "",
+                          "request": "",
+                          "action": "",
+                          "success": "",
+                          "error": "",
+                          "body": "",
+                          "authLogin": "",
+                          "authPassword": "",
+                          "typeVKPay": "",
+                          "idVK": "",
+                          "aidVK": "",
+                          "descriptionVKPay": ""
+                        },
+                        "flags": {
+                          "platform": [],
+                          "skipped": false,
+                          "sendRequest": false,
+                          "allowEncoding": false
+                        }
+                      },
+                      {
+                        "id": "Nxu4o6xT0-A0X-xJrjctY",
+                        "name": "Button",
+                        "props": {
+                          "method": "GET",
+                          "parser": "json",
+                          "headers": {
+                            "User-Agent": "Botmother/1.7 (+https://botmother.com)",
+                            "Content-Type": "application/json"
+                          },
+                          "allowAuth": false,
+                          "color": "default",
+                          "typeVK": "text",
+                          "amountVK": 1,
+                          "notAutoAnswerCb": false,
+                          "sendUrl": false,
+                          "children": "хай",
+                          "ref": "",
+                          "href": "",
+                          "request": "",
+                          "action": "",
+                          "success": "",
+                          "error": "",
+                          "body": "",
+                          "authLogin": "",
+                          "authPassword": "",
+                          "typeVKPay": "",
+                          "idVK": "",
+                          "aidVK": "",
+                          "descriptionVKPay": ""
+                        },
+                        "flags": {
+                          "platform": [],
+                          "skipped": false,
+                          "sendRequest": false,
+                          "allowEncoding": false
+                        }
+                      }
+                    ]
+                  },
+                  "flags": {
+                    "platform": [],
+                    "skipped": false
+                  }
+                },
+                {
+                  "id": "oIw-Bb6baF",
+                  "name": "ButtonRow",
+                  "props": {
+                    "children": [
+                      {
+                        "id": "RKb7qmbFfSFPAMZHTmb7G",
+                        "name": "Button",
+                        "props": {
+                          "method": "GET",
+                          "parser": "json",
+                          "headers": {
+                            "User-Agent": "Botmother/1.7 (+https://botmother.com)",
+                            "Content-Type": "application/json"
+                          },
+                          "allowAuth": false,
+                          "color": "default",
+                          "typeVK": "text",
+                          "amountVK": 1,
+                          "notAutoAnswerCb": false,
+                          "sendUrl": false,
+                          "children": "",
+                          "ref": "",
+                          "href": "",
+                          "request": "",
+                          "action": "",
+                          "success": "",
+                          "error": "",
+                          "body": "",
+                          "authLogin": "",
+                          "authPassword": "",
+                          "typeVKPay": "",
+                          "idVK": "",
+                          "aidVK": "",
+                          "descriptionVKPay": ""
+                        },
+                        "flags": {
+                          "platform": [],
+                          "skipped": false,
+                          "sendRequest": false,
+                          "allowEncoding": false
+                        }
+                      }
+                    ]
+                  },
+                  "flags": {
+                    "platform": [],
+                    "skipped": false
+                  }
+                }
+              ],
+              "notOneTime": false,
+              "inputPlaceholder": ""
+            },
+            "flags": {
+              "platform": [],
+              "skipped": false
+            }
+          },
+          {
+            "id": "yS0-ih0aE",
+            "name": "Fork",
+            "props": {
+              "children": [
+                {
+                  "id": "kZFv4PaSJ",
+                  "name": "Goal",
+                  "props": {
+                    "set": "",
+                    "type": "text",
+                    "ref": "uRRaB85NLv",
+                    "name": "",
+                    "value": "наши товары",
+                    "children": "",
+                    "userContact": false,
+                    "exeNext": true,
+                    "disallowLocationInput": true,
+                    "location": {
+                      "lat": -34.397,
+                      "lng": 150.644,
+                      "radius": 0
+                    }
+                  },
+                  "flags": {
+                    "reg": "",
+                    "platform": [],
+                    "skipped": false
+                  }
+                },
+                {
+                  "id": "tFclBvs9jt",
+                  "name": "Goal",
+                  "props": {
+                    "set": "",
+                    "type": "text",
+                    "ref": "uRRaB85NLv",
+                    "name": "",
+                    "value": "товары",
+                    "children": "",
+                    "userContact": false,
+                    "exeNext": true,
+                    "disallowLocationInput": true,
+                    "location": {
+                      "lat": -34.397,
+                      "lng": 150.644,
+                      "radius": 0
+                    }
+                  },
+                  "flags": {
+                    "reg": "",
+                    "platform": [],
+                    "skipped": false
+                  }
+                },
+                {
+                  "id": "IIr9ZGhdK",
+                  "name": "Goal",
+                  "props": {
+                    "set": "",
+                    "type": "text",
+                    "ref": "82aaVHkI4",
+                    "name": "",
+                    "value": "адреса",
+                    "children": "",
+                    "userContact": false,
+                    "exeNext": true,
+                    "disallowLocationInput": true,
+                    "location": {
+                      "lat": -34.397,
+                      "lng": 150.644,
+                      "radius": 0
+                    }
+                  },
+                  "flags": {
+                    "reg": "",
+                    "platform": [],
+                    "skipped": false
+                  }
+                },
+                {
+                  "id": "AUbJsA8fd",
+                  "name": "Goal",
+                  "props": {
+                    "set": "",
+                    "type": "text",
+                    "ref": "e-OYkOUGo",
+                    "name": "",
+                    "value": "о нас",
+                    "children": "",
+                    "userContact": false,
+                    "exeNext": true,
+                    "disallowLocationInput": true,
+                    "location": {
+                      "lat": -34.397,
+                      "lng": 150.644,
+                      "radius": 0
+                    }
+                  },
+                  "flags": {
+                    "reg": "",
+                    "platform": [],
+                    "skipped": false
+                  }
+                },
+                {
+                  "id": "jWIEoIHlVDkIKQkDgV6oa",
+                  "name": "Goal",
+                  "props": {
+                    "set": "",
+                    "type": "text",
+                    "ref": "e-OYkOUGo",
+                    "name": "",
+                    "value": "хай",
+                    "children": "соси",
+                    "userContact": false,
+                    "exeNext": true,
+                    "disallowLocationInput": true,
+                    "location": {
+                      "lat": -34.397,
+                      "lng": 150.644,
+                      "radius": 0
+                    }
+                  },
+                  "flags": {
+                    "reg": "",
+                    "platform": [],
+                    "skipped": false,
+                    "default": false
+                  }
+                },
+                {
+                  "id": "RdcftNWgXA",
+                  "name": "Goal",
+                  "props": {
+                    "children": "Sorry, I did not understand you.\n\nI'm still learning. Try clicking on one of the buttons.",
+                    "set": "",
+                    "name": "",
+                    "ref": "nd0-ASYTP",
+                    "exeNext": false
+                  },
+                  "flags": {
+                    "default": true,
+                    "skipped": false
+                  }
+                }
+              ],
+              "from": ""
+            },
+            "flags": {
+              "platform": [],
+              "skipped": false
+            }
+          }
+        ]
+      },
+      "82aaVHkI4": {
+        "title": "Адреса",
+        "position": {
+          "left": 1447,
+          "top": 852
+        },
+        "hidden": false,
+        "privacy": "unlock",
+        "invalid": false,
+        "_id": "82aaVHkI4",
+        "id": "82aaVHkI4",
+        "components": [
+          {
+            "id": "aZuac9Cch",
+            "name": "Geolocation",
+            "props": {
+              "location": {
+                "lat": 43.638092,
+                "lng": -79.4318103,
+                "radius": 0
+              }
+            },
+            "flags": {
+              "platform": [
+                "fb",
+                "tg",
+                "viber",
+                "vk"
+              ],
+              "skipped": false
+            }
+          },
+          {
+            "id": "dqil-QclP",
+            "name": "Message",
+            "props": {
+              "children": "Наш адрес: Канада, Торонто, Литл Тибет",
+              "formatedChildren": "Наш адрес: Канада, Торонто, Литл Тибет",
+              "linksPreview": true,
+              "compileLinks": false
+            },
+            "flags": {
+              "typing": "",
+              "notyping": false,
+              "no_hide": false,
+              "platform": [],
+              "skipped": false,
+              "end_session": false
+            }
+          },
+          {
+            "id": "iuVyWIm5I",
+            "name": "Forward",
+            "props": {
+              "ref": "nd0-ASYTP"
+            },
+            "flags": {
+              "stop": false,
+              "platform": [],
+              "skipped": false
+            }
+          }
+        ]
+      },
+      "uRRaB85NLv": {
+        "title": "Товары",
+        "position": {
+          "left": 1180,
+          "top": 193
+        },
+        "hidden": false,
+        "privacy": "unlock",
+        "invalid": false,
+        "_id": "uRRaB85NLv",
+        "id": "uRRaB85NLv",
+        "components": [
+          {
+            "id": "RRfFwCBCb",
+            "name": "Image",
+            "props": {
+              "caption": "Мы продаем много разных тортиков, и все они вкусные! Но помните, некоторые тортики — это ложь.",
+              "image": [
+                {
+                  "fileId": "60ed4a98f34ddc56d8b58fef",
+                  "filename": "pexels-matheus-guimarÃ£es-1291712.jpg"
+                }
+              ],
+              "vkImage": "",
+              "disableCache": false
+            },
+            "flags": {
+              "platform": [],
+              "skipped": false
+            }
+          },
+          {
+            "id": "Y-pQ4hxHt",
+            "name": "Forward",
+            "props": {
+              "ref": "nd0-ASYTP"
+            },
+            "flags": {
+              "stop": false,
+              "platform": [],
+              "skipped": false
+            }
+          }
+        ]
+      },
+      "e-OYkOUGo": {
+        "title": "О нас",
+        "position": {
+          "left": 1661,
+          "top": 1707
+        },
+        "hidden": false,
+        "privacy": "unlock",
+        "invalid": false,
+        "_id": "e-OYkOUGo",
+        "id": "e-OYkOUGo",
+        "components": [
+          {
+            "id": "dLltM7HYX",
+            "name": "ButtonGroup",
+            "props": {
+              "children": [
+                {
+                  "id": "X1DbcG8U6N",
+                  "name": "Message",
+                  "props": {
+                    "children": "Мы быстрорастущая компания.\nСейчас мы ищем партнеров для дальнейшего роста.\nУ нас дружный коллектив. Будем рады любому сотрудничеству.",
+                    "formatedChildren": "Мы быстрорастущая компания.\nСейчас мы ищем партнеров для дальнейшего роста.\nУ нас дружный коллектив. Будем рады любому сотрудничеству.",
+                    "linksPreview": true,
+                    "compileLinks": false
+                  },
+                  "flags": {
+                    "typing": "",
+                    "notyping": false,
+                    "no_hide": false,
+                    "platform": [],
+                    "skipped": false,
+                    "end_session": false
+                  }
+                },
+                {
+                  "id": "BoAOFXn38kbNzAhpOIrFn",
+                  "name": "ButtonRow",
+                  "props": {
+                    "children": [
+                      {
+                        "id": "kPqdyIBDN3",
+                        "name": "Button",
+                        "props": {
+                          "children": "Наш сайт",
+                          "ref": "",
+                          "href": "https://example.com",
+                          "action": "",
+                          "method": "GET",
+                          "success": "",
+                          "error": "",
+                          "parser": "json",
+                          "body": "",
+                          "headers": {
+                            "User-Agent": "Botmother/1.0 (+http://botmother.com)",
+                            "content-type": "application/json"
+                          },
+                          "allowAuth": "",
+                          "authLogin": "",
+                          "authPassword": "",
+                          "color": "default",
+                          "typeVK": "text",
+                          "typeVKPay": "",
+                          "idVK": "",
+                          "aidVK": "",
+                          "amountVK": 1,
+                          "descriptionVKPay": ""
+                        },
+                        "flags": {
+                          "platform": [],
+                          "sendRequest": false,
+                          "allowEncoding": false,
+                          "skipped": false
+                        }
+                      }
+                    ]
+                  },
+                  "flags": {
+                    "platform": [],
+                    "skipped": false
+                  }
+                }
+              ]
+            },
+            "flags": {
+              "platform": [],
+              "skipped": false
+            }
+          },
+          {
+            "id": "jTcQShlJO",
+            "name": "Forward",
+            "props": {
+              "ref": "nd0-ASYTP"
+            },
+            "flags": {
+              "stop": false,
+              "platform": [],
+              "skipped": false
+            }
+          }
+        ]
+      },
+      "bIhn9HYoxM9RN286GZhxJ": {
+        "title": "Новый экран 5",
+        "position": {
+          "left": 228.5,
+          "top": 483.5
+        },
+        "hidden": false,
+        "privacy": "unlock",
+        "invalid": false,
+        "_id": "bIhn9HYoxM9RN286GZhxJ",
+        "id": "bIhn9HYoxM9RN286GZhxJ",
+        "components": [
+          {
+            "id": "MrL8gBmZG",
+            "name": "Message",
+            "props": {
+              "children": "",
+              "formatedChildren": "sfsdfs",
+              "linksPreview": true,
+              "compileLinks": false,
+              "outPlatformId": "",
+              "protectContent": false,
+              "facebookMessageTag": ""
+            },
+            "flags": {
+              "typing": "",
+              "notyping": false,
+              "no_hide": true,
+              "platform": [],
+              "skipped": false,
+              "end_session": false
+            }
+          }
+        ]
+      }
+    },
+    "configs": {
+      "tg": {
+        "token": "",
+        "botanalyticsToken": "",
+        "username": "",
+        "tokenExists": false
+      },
+      "vi": {
+        "voice": "",
+        "phone": "",
+        "botanalyticsToken": "",
+        "tokenExists": false
+      },
+      "fb": {
+        "marker": "",
+        "token": "",
+        "advancedMode": false,
+        "botanalyticsToken": "",
+        "page_id": "",
+        "tokenExists": false
+      },
+      "viber": {
+        "token": "",
+        "welcomeMessage": "",
+        "botanalyticsToken": "",
+        "username": "",
+        "tokenExists": false
+      },
+      "vk": {
+        "token": null,
+        "webhook": "https://app.botmother.com/api/vk/webhook/6282782aa5e9502837888362",
+        "confirmationString": "",
+        "secretKey": "nN6W0GxphK3V",
+        "advancedMode": false,
+        "serverId": 2,
+        "welcomeMessage": "ввв",
+        "groupId": 199174829,
+        "tokenExists": true
+      },
+      "ok": {
+        "token": null,
+        "groupId": "",
+        "tokenExists": false
+      },
+      "yandexDialogs": {
+        "webhook": "https://app.botmother.com/api/yandex-dialogs/webhook/6282782aa5e9502837888362",
+        "screen": "",
+        "token": null,
+        "tokenExists": false
+      },
+      "wa": {
+        "webhook": "https://app.botmother.com/api/wa/webhook/6282782aa5e9502837888362",
+        "token": null,
+        "channelId": "",
+        "phone": "",
+        "company_id": "",
+        "welcomeMessage": "",
+        "tokenExists": false
+      },
+      "whatsappEdna": {
+        "token": "",
+        "phone": "",
+        "subject": "MFMS_TEST3_WA",
+        "tokenExists": false
+      },
+      "instagram": {
+        "username": "",
+        "id": "",
+        "fbPageId": "",
+        "chatStartWord": "Можно с тобой поговорить?",
+        "chatStopWord": "Диалог завершен",
+        "token": null,
+        "tokenExists": false
+      }
+    },
+    "flags": {},
+    "chat": {
+      "welcome_message": "Оператор подключился в чат",
+      "welcome_button_caption": "Завершить диалог",
+      "final_message": "Оператор покинул чат",
+      "final_viber_message": "Оператор покинул чат. Чтобы вернуться в бота, напишите «стоп»",
+      "final_screen": "",
+      "disableFeedbackUsedesk": false
+    },
+    "shard": {
+      "private": false,
+      "_id": "5fe631c4a5d93201e7478011",
+      "name": "Sodium",
+      "port": "2111"
+    },
+    "events": {},
+    "faq": null,
+    "menuTitle": "Select one of the menu items",
+    "pubsub": {
+      "host": "",
+      "port": "",
+      "access_token": "",
+      "sendFileHost": "https://secure.usedesk.ru"
+    },
+    "v": 1,
+    "completedComponentCountExceededAt": null,
+    "avatar": "60ed6c58f34ddc56d8b8f8e4",
+    "maxTestersQty": 5
+  }
+]

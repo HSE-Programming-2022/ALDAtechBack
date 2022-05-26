@@ -30,8 +30,8 @@ services:
       - POSTGRES_PASSWORD=aldatech_password
     expose:
       - 5432
-    volumes:
-      - db_volume:/var/lib/postgresql/data
+    # volumes:
+    #   - db_volume:/var/lib/postgresql/data
     shm_size: 1g
     networks:
       - aldatech-network

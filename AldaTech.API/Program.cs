@@ -38,4 +38,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapGet("/", (ApplicationContext db) => db.Users.ToList());
+
 app.Run();
