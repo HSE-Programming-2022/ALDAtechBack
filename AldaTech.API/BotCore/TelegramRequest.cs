@@ -21,6 +21,6 @@ public class TelegramAPI
     		.FromAsync<WebResponse>(request.BeginGetResponse,
                             request.EndGetResponse,
                             null);
-		Console.WriteLine(response.);
+		//Console.WriteLine(response.);
 	}
 }
