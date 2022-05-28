@@ -2,12 +2,16 @@ using Microsoft.EntityFrameworkCore;
 using AldaTech_api.Models;
 using System.Net;
 
+using AldaTech_api.BotCore;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Подключаем БД
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(connection));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+// builder.Services.AddSingleton<TelegramAPI>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddHealthChecks();
