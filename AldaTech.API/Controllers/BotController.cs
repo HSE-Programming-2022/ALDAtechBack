@@ -15,8 +15,6 @@ public class BotController : Controller
 	public async Task<ActionResult> GetUpdates()
 	{
 		// var TgBotRunner = provider.GetService<IMessageSender>();
-		var TgAPI = new TelegramAPI();
-		TgAPI.GetUpdates();
 		return Ok();
 	}
 

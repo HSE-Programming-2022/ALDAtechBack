@@ -1,5 +1,5 @@
 {
-  "FilePath": "/Users/artem/ALDAtechBack/AldaTech.API/AldaTech-api.csproj",
+  "FilePath": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/AldaTech-api.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "6.0",
@@ -16298,38 +16298,38 @@
   "RootNamespace": "AldaTech_api",
   "Documents": [
     {
-      "FilePath": "/Users/artem/ALDAtechBack/AldaTech.API/Views/Home/Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FilePath": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/Views/_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/artem/ALDAtechBack/AldaTech.API/Views/Shared/_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/artem/ALDAtechBack/AldaTech.API/Views/Shared/Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/artem/ALDAtechBack/AldaTech.API/Views/Home/Privacy.cshtml",
+      "FilePath": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/Views/Home/Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/artem/ALDAtechBack/AldaTech.API/Views/_ViewImports.cshtml",
+      "FilePath": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/Views/Shared/_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/Views/_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/artem/ALDAtechBack/AldaTech.API/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "FilePath": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/artem/ALDAtechBack/AldaTech.API/Views/_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FilePath": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/Views/Shared/Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/Views/Home/Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     }
   ],

@@ -1,6 +1,6 @@
 # ALDAtechBack
 Для запуска пишем 
-docker-compose run --build
+docker-compose up --build
 
 Порт HTTP 5000
 
