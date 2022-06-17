@@ -11,32 +11,20 @@ using Telegram.Bot.Types.Enums;
 namespace AldaTech_api.BotCore;
 
 
-public class MessageListener
+
+
+public class BotClientTelegram : IBotClient
 {
-    public TaskCompletionSource<Message> Task { get; set; }
-    private Func<Message, bool> Check;
-
-    public MessageListener(Func<Message, bool> check)
-    {
-        this.Check = check;
-        this.Task = new TaskCompletionSource<Message>();
-    }
-
-    public bool ListensTo(Message message) => Check(message);
-}
-
-public class TelegramBotWrapper
-{
-    private TelegramBotClient _botClient;
+    private Telegram.Bot.TelegramBotClient _botClient;
     private string _token;
     private CancellationTokenSource _cts;
     private ReceiverOptions _receiverOptions;
     private List<MessageListener> _listeners;
 
-    public TelegramBotWrapper(string token)
+    public BotClientTelegram(string token)
     {
         _token = token;
-        _botClient = new TelegramBotClient(token);
+        _botClient = new Telegram.Bot.TelegramBotClient(token);
         _cts = new CancellationTokenSource();
         
         _receiverOptions = new ReceiverOptions
@@ -90,7 +78,8 @@ public class TelegramBotWrapper
             }
         }
         
-        NewDialog(message);
+        var bot = new BotManager(this, message);
+        var task = bot.Run();
     }
     
     Task HandlePollingErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
@@ -106,30 +95,44 @@ public class TelegramBotWrapper
         return Task.CompletedTask;
     }
 
-    private async Task NewDialog(Message message)
+    public async Task SendTextMessageAsync(long chatId, string text)
     {
-        var chatId = message.Chat.Id;
-        var messageText = message.Text;
-
-        Console.WriteLine($"Received a '{messageText}' message in chat {chatId}.");
-
-        // Echo received message text
         await _botClient.SendTextMessageAsync(
             chatId: chatId,
-            text: "Ener age",
-            cancellationToken: _cts.Token);
-        var msg = await (WaitFor(x => x.Chat.Id == chatId).Task);
-        var age = msg.Text;
-        await _botClient.SendTextMessageAsync(
-            chatId: chatId,
-            text: "Enter name",
-            cancellationToken: _cts.Token);
-        msg = await (WaitFor(x => x.Chat.Id == chatId).Task);
-        var name = msg.Text;
-        
-        await _botClient.SendTextMessageAsync(
-            chatId: chatId,
-            text: age + " - " + name,
-            cancellationToken: _cts.Token);
+            text: text
+            );
     }
+
+    public async Task<Message> GetUserMessageAsync(long chatId)
+    {
+        var msg = await (WaitFor(x => x.Chat.Id == chatId).Task);
+        return msg;
+    }
+    
+    // private async Task NewDialog(Message message)
+    // {
+    //     var chatId = message.Chat.Id;
+    //     var messageText = message.Text;
+    //
+    //     Console.WriteLine($"Received a '{messageText}' message in chat {chatId}.");
+    //
+    //     // Echo received message text
+    //     await _botClient.SendTextMessageAsync(
+    //         chatId: chatId,
+    //         text: "Ener age",
+    //         cancellationToken: _cts.Token);
+    //     var msg = await (WaitFor(x => x.Chat.Id == chatId).Task);
+    //     var age = msg.Text;
+    //     await _botClient.SendTextMessageAsync(
+    //         chatId: chatId,
+    //         text: "Enter name",
+    //         cancellationToken: _cts.Token);
+    //     msg = await (WaitFor(x => x.Chat.Id == chatId).Task);
+    //     var name = msg.Text;
+    //     
+    //     await _botClient.SendTextMessageAsync(
+    //         chatId: chatId,
+    //         text: age + " - " + name,
+    //         cancellationToken: _cts.Token);
+    // }
 }

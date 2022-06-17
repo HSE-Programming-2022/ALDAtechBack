@@ -9,12 +9,14 @@ namespace AldaTech_api.Controllers;
 
 [Route("[controller]")]
 [ApiController]
-public class BotController : Controller
+public class BotStartController : Controller
 {
 	[HttpPost]
-	public async Task<ActionResult> GetUpdates()
+	public async Task<ActionResult> StartBot()
 	{
 		// var TgBotRunner = provider.GetService<IMessageSender>();
+		var bot = new BotClientTelegram("5001678276:AAH0MgT6aPNR7pkOGeD5eYFxEsJI3sgE4WA");
+		Console.WriteLine("Bot started");
 		return Ok();
 	}
 
