@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "JsonSubTypes/1.9.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/JsonSubTypes.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/JsonSubTypes.dll": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore/6.0.4": {
         "type": "package",
         "dependencies": {
@@ -268,6 +280,25 @@
     }
   },
   "libraries": {
+    "JsonSubTypes/1.9.0": {
+      "sha512": "b7BHm3Oo5mqcIUWogcUsjOya9PmkNyLmwWtRfeCHwgGGXMGEFiz95ZxqfZQPXqxJRFr+2IxoiIcDv10tWUmvTQ==",
+      "type": "package",
+      "path": "jsonsubtypes/1.9.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "jsonsubtypes.1.9.0.nupkg.sha512",
+        "jsonsubtypes.nuspec",
+        "lib/net35/JsonSubTypes.dll",
+        "lib/net40/JsonSubTypes.dll",
+        "lib/net45/JsonSubTypes.dll",
+        "lib/net46/JsonSubTypes.dll",
+        "lib/net47/JsonSubTypes.dll",
+        "lib/netstandard1.3/JsonSubTypes.dll",
+        "lib/netstandard2.0/JsonSubTypes.dll"
+      ]
+    },
     "Microsoft.EntityFrameworkCore/6.0.4": {
       "sha512": "gTh3SJsF5WNjEmG32kYc3U4tjeTIv55QOrwHAJcF/xtrIVMteDHMArGC35N0dw86WFY0v8yFkKYKOIOln4jkfQ==",
       "type": "package",
@@ -711,6 +742,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "JsonSubTypes >= 1.9.0",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 6.0.4",
       "Telegram.Bot >= 18.0.0"
     ]
@@ -752,6 +784,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "JsonSubTypes": {
+            "target": "Package",
+            "version": "[1.9.0, )"
+          },
           "Npgsql.EntityFrameworkCore.PostgreSQL": {
             "target": "Package",
             "version": "[6.0.4, )"

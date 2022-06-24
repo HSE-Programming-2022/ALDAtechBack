@@ -1,11 +1,16 @@
+using Newtonsoft.Json;
+
 namespace AldaTech_api.BotCore;
 
 public class Screen
 {
+    [JsonProperty]
     public long Id { get; set; }
     private IBotClient _botClient;
     private long _chatId;
+    
     private string _text;
+    [JsonProperty]
     List<IBotAction> _actions;
 
     public Screen(IBotClient botClient, long chatId, List<IBotAction> actions, long id)
@@ -16,27 +21,38 @@ public class Screen
         Id = id;
     }
 
-    public async Task<Redirect?> Run()
+    public async Task<ActionExecutionResult> Run(BotUserContext ctx)
     {
+        _botClient = ctx.BotClient;
+        _chatId = ctx.ChatId; 
         foreach (var action in _actions)
         {
-            var execRes = await action.Run();
-            if (execRes.Status == ActionExecutionStatus.Error)
-            {
-                Console.WriteLine("Error");
-                return null;
-            }
+            Console.WriteLine(ctx.Ct.IsCancellationRequested);
+            if (ctx.Ct.IsCancellationRequested)
+                return new ActionExecutionResult(ActionExecutionStatus.Cancelled);
 
-            if (execRes.Status == ActionExecutionStatus.SwitchWindow)
+            var executionResult = await action.Run(ctx);
+            while (executionResult.Status == ActionExecutionStatus.ReRun)
             {
-                return execRes.Redirect;
+                executionResult = await action.Run(ctx);
             }
-            
-            // Можно ничего не писать 
-            if (execRes.Status == ActionExecutionStatus.RunNext)
-                continue;
+            Console.WriteLine("Screen " + executionResult.Status);
+            switch (executionResult.Status)
+            {
+                case ActionExecutionStatus.Cancelled:
+                    return executionResult;
+                    break;
+                case ActionExecutionStatus.Error:
+                    return executionResult;
+                    break;
+                case ActionExecutionStatus.RunNext:
+                    continue;
+                    break;
+                case ActionExecutionStatus.SwitchWindow:
+                    return executionResult;
+                    break;
+            }
         }
-
-        return null;
+        return new ActionExecutionResult(ActionExecutionStatus.Done);
     }
 }

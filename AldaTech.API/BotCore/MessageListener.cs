@@ -4,7 +4,7 @@ namespace AldaTech_api.BotCore;
 
 public class MessageListener
 {
-    public TaskCompletionSource<Message> Task { get; set; }
+    public TaskCompletionSource<Message?> Task { get; set; }
     private Func<Message, bool> Check;
 
     public MessageListener(Func<Message, bool> check)

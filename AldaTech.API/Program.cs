@@ -11,6 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(connection));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+builder.Services.AddSingleton<BotRunner>();
+
+
 // builder.Services.AddSingleton<TelegramAPI>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
