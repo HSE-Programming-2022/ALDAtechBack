@@ -1,10 +1,21 @@
+using Newtonsoft.Json;
 using Telegram.Bot.Types;
 
 namespace AldaTech_api.BotCore;
 
+public class BotUserContext
+{
+    public IBotClient BotClient {get; set; }
+    
+    public CancellationToken Ct { get; set; }
+    public long ChatId {get; set; }
+}
+
 public class BotManager
 {
+    private const string BotManagerPath = "./Data/bot.json";
     private IBotClient _botClient;
+    [JsonProperty]
     private List<Screen> _screens;
     private long _chatId;
 
@@ -30,34 +41,58 @@ public class BotManager
         actions.Add(new TextMessage("Это экран 2", _botClient, _chatId));
         _screens.Add(new Screen(_botClient, _chatId, actions, 2));
     }
-    
-    public BotManager(IBotClient botClient, Message message)
+
+    // public BotManager(List<Screen> screens)
+    public BotManager()
     {
-        _botClient = botClient;
+        // _botClient = botClient;
         _screens = new List<Screen>();
-        _chatId = message.Chat.Id;
+        // _chatId = message.Chat.Id;
         
         // TODO инициализация из JSON
         
         SetDefaultBot();
+        // var strg = new BotStorage(BotManagerPath);
+        // strg.BotManager = this;
+        // strg.SaveBotManager(BotManagerPath);
     }
 
-    public async Task Run()
+    public async Task Run(BotUserContext ctx)
     {
+        _botClient = ctx.BotClient;
+        _chatId = ctx.ChatId;
+
+
         var screen = _screens.FirstOrDefault();
-        while (true)
+        while (screen is not null)
         {
-            var redirect = await screen.Run();
-
-            if (redirect is null)
-            {
-                await _botClient.SendTextMessageAsync(_chatId, "На этом все! Пишите еще");
-                Console.WriteLine("No redirection - Exiting user");
+            if (ctx.Ct.IsCancellationRequested)
                 return;
-            }
 
-            screen = _screens.FirstOrDefault(x => x.Id == redirect.ScreenId);
+            var executionResult = await screen.Run(ctx);
+
+            Console.WriteLine("Bot manager " + executionResult.Status);
+            switch (executionResult.Status)
+            {
+                
+                case ActionExecutionStatus.Cancelled:
+                    return;
+                    break;
+                case ActionExecutionStatus.Error:
+                    return;
+                    break;
+                case ActionExecutionStatus.SwitchWindow:
+                    var redirect = executionResult.Redirect;
+                    screen = _screens.FirstOrDefault(x => x.Id == redirect.ScreenId);
+                    break;
+                case ActionExecutionStatus.Done:
+                    await _botClient.SendTextMessageAsync(_chatId, "На этом все! Пишите еще");
+                    Console.WriteLine("No redirection - Exiting user");
+                    return;
+            }
         }
+
+        
     }
 
 }

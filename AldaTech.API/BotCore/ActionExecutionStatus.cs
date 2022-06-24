@@ -5,4 +5,7 @@ public enum ActionExecutionStatus
     Error,
     RunNext,
     SwitchWindow,
+    Cancelled,
+    ReRun,
+    Done,
 }

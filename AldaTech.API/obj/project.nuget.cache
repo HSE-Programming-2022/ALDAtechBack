@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ugo8d4L0uPLklYnPpESb8FAfGDaf837ms5uhnsD+oJJfeMj+FzwMWqAADogu/Qtwbhbr2cOFE5UU1Tw7S7BhAw==",
+  "dgSpecHash": "ibiNHbwdSYtaHHuteWBXJwDTjxV9WOlgdY5eCo5LKS7vvaPbJdpiPsPD02+gGlOMjjsOVSnS0DsJlcIATXaMOA==",
   "success": true,
   "projectFilePath": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/AldaTech-api.csproj",
   "expectedPackageFiles": [
+    "/Users/artem/.nuget/packages/jsonsubtypes/1.9.0/jsonsubtypes.1.9.0.nupkg.sha512",
     "/Users/artem/.nuget/packages/microsoft.entityframeworkcore/6.0.4/microsoft.entityframeworkcore.6.0.4.nupkg.sha512",
     "/Users/artem/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.4/microsoft.entityframeworkcore.abstractions.6.0.4.nupkg.sha512",
     "/Users/artem/.nuget/packages/microsoft.entityframeworkcore.analyzers/6.0.4/microsoft.entityframeworkcore.analyzers.6.0.4.nupkg.sha512",

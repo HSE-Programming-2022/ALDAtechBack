@@ -1,0 +1,56 @@
+{
+  "_screens": [
+    {
+      "_actions": [
+        {
+          "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
+          "_text": "Сколько будет 2 * 2?"
+        },
+        {
+          "$type": "AldaTech_api.BotCore.Gate, AldaTech-api",
+          "_options": [
+            {
+              "TextOption": "4",
+              "Action": {
+                "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
+                "_text": "Жесть ты умный"
+              }
+            },
+            {
+              "TextOption": "2",
+              "Action": {
+                "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
+                "_text": "Дурак?"
+              }
+            },
+            {
+              "TextOption": "5",
+              "Action": {
+                "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
+                "_text": "5?"
+              }
+            }
+          ]
+        },
+        {
+          "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
+          "_text": "Абоба"
+        },
+        {
+          "$type": "AldaTech_api.BotCore.Redirect, AldaTech-api",
+          "ScreenId": 2
+        }
+      ],
+      "Id": 1
+    },
+    {
+      "_actions": [
+        {
+          "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
+          "_text": "Это экран 2"
+        }
+      ],
+      "Id": 2
+    }
+  ]
+}

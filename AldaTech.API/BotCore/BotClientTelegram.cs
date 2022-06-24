@@ -1,3 +1,7 @@
+using System.Security.Cryptography.X509Certificates;
+using AldaTech_api.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using Telegram.Bot;
 using Telegram.Bot.Exceptions;
 using Telegram.Bot.Polling;
@@ -10,28 +14,35 @@ using Telegram.Bot.Types.Enums;
 
 namespace AldaTech_api.BotCore;
 
-
-
-
 public class BotClientTelegram : IBotClient
 {
     private Telegram.Bot.TelegramBotClient _botClient;
+    private Bot _botInfo;
     private string _token;
+    private List<Task> _user;
     private CancellationTokenSource _cts;
     private ReceiverOptions _receiverOptions;
     private List<MessageListener> _listeners;
-
-    public BotClientTelegram(string token)
+    private List<BotManager> _botManagers;
+    private string _botManagerPath = "./Data/bot.json";
+    public int Id { get; private set; }
+    public BotClientTelegram(Bot botInfo)
     {
-        _token = token;
-        _botClient = new Telegram.Bot.TelegramBotClient(token);
-        _cts = new CancellationTokenSource();
         
+        _botInfo = botInfo;
+        _token = botInfo.Token;
+        _botManagerPath = botInfo.BotManagerPath;
+        Id = botInfo.Id;
+        
+        _botClient = new Telegram.Bot.TelegramBotClient(_token);
+        _cts = new CancellationTokenSource();
+        _botManagers = new List<BotManager>();
+
         _receiverOptions = new ReceiverOptions
         {
             AllowedUpdates = Array.Empty<UpdateType>() // receive all update types
         };
-        
+
         _botClient.StartReceiving(
             updateHandler: HandleUpdateAsync,
             pollingErrorHandler: HandlePollingErrorAsync,
@@ -42,9 +53,22 @@ public class BotClientTelegram : IBotClient
         _listeners = new List<MessageListener>();
     }
 
-    public void Destroy()
+
+    public void Stop()
     {
+        // throw new TaskCanceledException();
+        Console.WriteLine("Stoping bot");
         _cts.Cancel();
+        Console.WriteLine(_cts.Token.IsCancellationRequested);
+        while (_listeners.Count != 0)
+        {
+            var listener = _listeners[0];
+            listener.Task.SetResult(null);
+            _listeners.Remove(listener);
+        }
+        
+        Console.WriteLine(_listeners.Count);
+        Console.WriteLine(_cts.Token.IsCancellationRequested);
     }
     
     public TaskCompletionSource<Message> WaitFor(Func<Message, bool> check)
@@ -56,6 +80,11 @@ public class BotClientTelegram : IBotClient
     
     async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
+        Console.WriteLine(_cts.Token == cancellationToken);
+        Console.WriteLine("Handle updates " + _cts.IsCancellationRequested);
+        Console.WriteLine("Handle updates " + cancellationToken.IsCancellationRequested);
+        Console.WriteLine("Handle updates " + _cts.Token.IsCancellationRequested);
+        Console.WriteLine("Handle updates " + _listeners.Count);
         // Only process Message updates: https://core.telegram.org/bots/api#message
         if (update.Type != UpdateType.Message)
             return;
@@ -77,9 +106,11 @@ public class BotClientTelegram : IBotClient
                 return;
             }
         }
-        
-        var bot = new BotManager(this, message);
-        var task = bot.Run();
+
+        var bot = BotJsonStorage.ReadBotManager(_botManagerPath);
+        BotUserContext ctx = new BotUserContext(){BotClient = this, ChatId = message.Chat.Id, Ct = _cts.Token};
+        bot.Run(ctx);
+        _botManagers.Add(bot);
     }
     
     Task HandlePollingErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
@@ -108,31 +139,4 @@ public class BotClientTelegram : IBotClient
         var msg = await (WaitFor(x => x.Chat.Id == chatId).Task);
         return msg;
     }
-    
-    // private async Task NewDialog(Message message)
-    // {
-    //     var chatId = message.Chat.Id;
-    //     var messageText = message.Text;
-    //
-    //     Console.WriteLine($"Received a '{messageText}' message in chat {chatId}.");
-    //
-    //     // Echo received message text
-    //     await _botClient.SendTextMessageAsync(
-    //         chatId: chatId,
-    //         text: "Ener age",
-    //         cancellationToken: _cts.Token);
-    //     var msg = await (WaitFor(x => x.Chat.Id == chatId).Task);
-    //     var age = msg.Text;
-    //     await _botClient.SendTextMessageAsync(
-    //         chatId: chatId,
-    //         text: "Enter name",
-    //         cancellationToken: _cts.Token);
-    //     msg = await (WaitFor(x => x.Chat.Id == chatId).Task);
-    //     var name = msg.Text;
-    //     
-    //     await _botClient.SendTextMessageAsync(
-    //         chatId: chatId,
-    //         text: age + " - " + name,
-    //         cancellationToken: _cts.Token);
-    // }
 }
