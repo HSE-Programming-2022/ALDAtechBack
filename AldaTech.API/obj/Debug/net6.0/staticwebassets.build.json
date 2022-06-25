@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MxlSw5zYErxBAt7gEg4BdNnnAtPZiGrsmwdGE5r7DKo=",
+  "Hash": "unvECPdcR35cmgRuSCXUQW1NGPLbA8LDW4v9WF1SEXo=",
   "Source": "AldaTech-api",
   "BasePath": "_content/AldaTech-api",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/obj/Debug/net6.0/scopedcss/projectbundle/AldaTech-api.bundle.scp.css"
+    },
+    {
+      "Identity": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/wwwroot/.DS_Store",
+      "SourceId": "AldaTech-api",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/wwwroot/",
+      "BasePath": "_content/AldaTech-api",
+      "RelativePath": ".DS_Store",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/.DS_Store"
     },
     {
       "Identity": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/wwwroot/css/site.css",
@@ -100,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/site.js"
+    },
+    {
+      "Identity": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/wwwroot/lib/.DS_Store",
+      "SourceId": "AldaTech-api",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/wwwroot/",
+      "BasePath": "_content/AldaTech-api",
+      "RelativePath": "lib/.DS_Store",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/lib/.DS_Store"
     },
     {
       "Identity": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",

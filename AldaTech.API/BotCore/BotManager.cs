@@ -34,6 +34,11 @@ public class BotManager
         actions.Add(new Gate(_botClient, _chatId, options));
         actions.Add(new TextMessage("Абоба", _botClient, _chatId));
         actions.Add(new Redirect(2));
+        var keyboardOptions = new List<string>();
+        keyboardOptions.Add("Я");
+        keyboardOptions.Add("Не Я");
+        keyboardOptions.Add("кто?");
+        actions.Add(new KeyBoard("кто ты?", keyboardOptions, _botClient, _chatId));
         // actions.Add(new TextMessage("Тест 3", _botClient, _chatId));
         
         _screens.Add(new Screen(_botClient, _chatId, actions, 1));
@@ -43,18 +48,23 @@ public class BotManager
     }
 
     // public BotManager(List<Screen> screens)
+    // public BotManager(BotUserContext ctx)
+    // {
+    //     _botClient = botClient;
+    //
+    //     
+    //     _screens = new List<Screen>();
+    //     _botClient = ctx.BotClient;
+    //     _chatId = ctx.ChatId;
+    //     SetDefaultBot();
+    //     BotJsonStorage.SaveBotManager("./Data/kb.json", this);
+    // }
+    
     public BotManager()
     {
-        // _botClient = botClient;
         _screens = new List<Screen>();
-        // _chatId = message.Chat.Id;
-        
-        // TODO инициализация из JSON
-        
-        SetDefaultBot();
-        // var strg = new BotStorage(BotManagerPath);
-        // strg.BotManager = this;
-        // strg.SaveBotManager(BotManagerPath);
+        // SetDefaultBot();
+        // BotJsonStorage.SaveBotManager("./Data/kb.json", this);
     }
 
     public async Task Run(BotUserContext ctx)

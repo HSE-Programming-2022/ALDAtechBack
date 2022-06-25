@@ -19,7 +19,7 @@ public class BotJsonStorage
         }
     }
     
-    public void SaveBotManager(string path, BotManager botManager)
+    public static void SaveBotManager(string path, BotManager botManager)
     {
         using (var sw = new StreamWriter(path))
         {

@@ -748,31 +748,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\drago\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/Users/artem/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\drago\\RiderProjects\\ALDAtechBack\\AldaTech.API\\AldaTech-api.csproj",
+      "projectUniqueName": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/AldaTech-api.csproj",
       "projectName": "AldaTech-api",
-      "projectPath": "C:\\Users\\drago\\RiderProjects\\ALDAtechBack\\AldaTech.API\\AldaTech-api.csproj",
-      "packagesPath": "C:\\Users\\drago\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\drago\\RiderProjects\\ALDAtechBack\\AldaTech.API\\obj\\",
+      "projectPath": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/AldaTech-api.csproj",
+      "packagesPath": "/Users/artem/.nuget/packages/",
+      "outputPath": "/Users/artem/Documents/ALDAtechBack/AldaTech.API/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\drago\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/artem/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -822,7 +815,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -107,7 +107,9 @@ public class BotClientTelegram : IBotClient
                 return;
             }
         }
-
+        // BotUserContext ctx = new BotUserContext(){BotClient = this, ChatId = message.Chat.Id, Ct = _cts.Token};
+        // var bot = new BotManager(ctx);
+        
         var bot = BotJsonStorage.ReadBotManager(_botManagerPath);
         BotUserContext ctx = new BotUserContext(){BotClient = this, ChatId = message.Chat.Id, Ct = _cts.Token};
         bot.Run(ctx);
