@@ -15,6 +15,10 @@ public class BotManager
 {
     private const string BotManagerPath = "./Data/bot.json";
     private IBotClient _botClient;
+    public List<Screen> Screens
+    {
+        get => _screens;
+    }
     [JsonProperty]
     private List<Screen> _screens;
     private long _chatId;

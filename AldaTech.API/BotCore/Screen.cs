@@ -10,6 +10,10 @@ public class Screen
     private long _chatId;
     
     private string _text;
+    public List<IBotAction> Actions
+    {
+        get => _actions;
+    }
     [JsonProperty]
     List<IBotAction> _actions;
 

@@ -28,6 +28,11 @@ public class Gate : IBotAction
 {
     private IBotClient _botClient;
     private long _chatId;
+    public string type { get => "Gate"; }
+    public List<Option> Options
+    {
+        get => _options; 
+    }
     public  List<Option> _options;
     public IBotAction? DefaultAction { get; set; }
 

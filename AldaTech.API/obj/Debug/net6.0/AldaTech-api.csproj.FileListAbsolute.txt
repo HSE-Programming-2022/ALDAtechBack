@@ -94,3 +94,4 @@
 /Users/artem/Documents/ALDAtechBack/AldaTech.API/obj/Debug/net6.0/ref/AldaTech-api.dll
 /Users/artem/Documents/ALDAtechBack/AldaTech.API/bin/Debug/net6.0/JsonSubTypes.dll
 /Users/artem/Documents/ALDAtechBack/AldaTech.API/bin/Debug/net6.0/Data/1.json
+/Users/artem/Documents/ALDAtechBack/AldaTech.API/bin/Debug/net6.0/Data/kb.json

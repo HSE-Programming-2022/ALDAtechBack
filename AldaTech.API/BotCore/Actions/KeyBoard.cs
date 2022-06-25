@@ -6,8 +6,13 @@ namespace AldaTech_api.BotCore;
 public class KeyBoard : IBotAction
 {
     private IBotClient _botClient;
+
+    public List<string> Options => _options;
+    
     [JsonProperty]
     private List<string> _options;
+
+    public string Text => _text;
     [JsonProperty]
     private string _text;
     private long _chatId;

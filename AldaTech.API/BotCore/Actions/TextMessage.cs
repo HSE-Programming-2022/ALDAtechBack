@@ -5,6 +5,10 @@ namespace AldaTech_api.BotCore;
 public class TextMessage : IBotAction
 {
     private IBotClient _botClient;
+    public string Text
+    {
+        get => _text; 
+    }
     [JsonProperty]
     private string _text;
     private long _chatId;
