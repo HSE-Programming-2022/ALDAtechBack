@@ -7,6 +7,7 @@ using Telegram.Bot.Exceptions;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
+using Telegram.Bot.Types.ReplyMarkups;
 
 // var bot = new TelegramBot("5001678276:AAH0MgT6aPNR7pkOGeD5eYFxEsJI3sgE4WA");
 // Console.ReadLine();
@@ -132,6 +133,15 @@ public class BotClientTelegram : IBotClient
             chatId: chatId,
             text: text
             );
+    }
+    
+    public async Task SendKeyBoardAsync(long chatId, string text, ReplyKeyboardMarkup keys)
+    {
+        await _botClient.SendTextMessageAsync(
+            chatId: chatId,
+            text: text,
+            replyMarkup: keys
+        );
     }
 
     public async Task<Message> GetUserMessageAsync(long chatId)
