@@ -8,8 +8,8 @@ public class ApplicationContext : DbContext
 	public ApplicationContext(DbContextOptions<ApplicationContext> options)
 		: base(options)
 	{
-		// Database.EnsureDeleted();
-		// Database.EnsureCreated();   // создаем базу данных при первом обращении
-		// Console.WriteLine("DB initialized");
+		 Database.EnsureDeleted();
+		 Database.EnsureCreated();   // создаем базу данных при первом обращении
+		 Console.WriteLine("DB initialized");
 	}
 }
