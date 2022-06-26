@@ -6,8 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2474064-4b94-448f-ae44-615b1baeb8c6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/AldaTech.API/Controllers/BotCodeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AldaTech.API/Controllers/BotCodeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AldaTech.API/Controllers/BotRunnerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AldaTech.API/Controllers/BotRunnerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ALDAtechBack.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ALDAtechBack.dir/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +74,7 @@
       <option name="presentableId" value="Default" />
       <updated>1656252807452</updated>
       <workItem from="1656252809620" duration="105000" />
-      <workItem from="1656252928510" duration="9536000" />
+      <workItem from="1656252928510" duration="11422000" />
     </task>
     <servers />
   </component>

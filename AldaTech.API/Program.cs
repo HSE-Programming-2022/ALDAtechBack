@@ -7,6 +7,16 @@ using AldaTech_api.BotCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy  =>
+        {
+            policy.WithOrigins("127.0.0.1:8080",
+                "http://localhost:8080");
+        });
+});
 // Подключаем БД
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(connection));
@@ -38,6 +48,8 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
