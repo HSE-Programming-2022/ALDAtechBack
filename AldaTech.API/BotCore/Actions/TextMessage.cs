@@ -5,17 +5,14 @@ namespace AldaTech_api.BotCore;
 public class TextMessage : IBotAction
 {
     private IBotClient _botClient;
-    public string Text
-    {
-        get => _text; 
-    }
-    [JsonProperty]
-    private string _text;
     private long _chatId;
 
+    [JsonProperty]
+    public string Text;
+    
     public TextMessage(string text, IBotClient botClient, long chatId)
     {
-        _text = text;
+        Text = text;
         _botClient = botClient;
         _chatId = chatId;
     }
@@ -24,8 +21,8 @@ public class TextMessage : IBotAction
         _botClient = ctx.BotClient;
         _chatId = ctx.ChatId;
 
-        Console.WriteLine("Sending " + _chatId + " " + _text);
-        await _botClient.SendTextMessageAsync(_chatId, _text);
+        Console.WriteLine("Sending " + _chatId + " " + Text);
+        await _botClient.SendTextMessageAsync(_chatId, Text);
         return new ActionExecutionResult(ActionExecutionStatus.RunNext);
     }
 }

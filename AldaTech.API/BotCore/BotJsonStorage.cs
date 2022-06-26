@@ -19,6 +19,19 @@ public class BotJsonStorage
         }
     }
     
+    public static BotManager ReadBotManagerFromString(string str)
+    {
+        using (var sr = new StringReader(str))
+        {
+            using (var jsonReader = new JsonTextReader(sr))
+            {
+                var serializer = new JsonSerializer { TypeNameHandling = TypeNameHandling.Auto };
+                var botManager = serializer.Deserialize<BotManager>(jsonReader);
+                return botManager;
+            }
+        }
+    }
+    
     public static void SaveBotManager(string path, BotManager botManager)
     {
         using (var sw = new StreamWriter(path))

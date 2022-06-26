@@ -1,37 +1,59 @@
 {
-  "_screens": [
+  "Screens": [
     {
-      "_actions": [
-        {
-          "$type": "AldaTech_api.BotCore.KeyBoard, AldaTech-api",
-          "_options": [
-            "19:55",
-            "19:56",
-            "19:57",
-            "19:55",
-            "19:56",
-            "19:57",
-            "19:55",
-            "19:56",
-            "19:57",
-            "19:55",
-            "19:56",
-            "19:57",
-            "19:58"
-          ],
-          "_text": "Текущее время:"
-        }
-      ],
-      "Id": 1
-    },
-    {
-      "_actions": [
+      "Id": 1,
+      "Actions": [
         {
           "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-          "_text": "Это экран 2"
+          "Text": "Сколько будет 2 * 2?"
+        },
+        {
+          "$type": "AldaTech_api.BotCore.Gate, AldaTech-api",
+          "Options": [
+            {
+              "TextOption": "4",
+              "Action": {
+                "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
+                "Text": "Жесть ты умный"
+              }
+            },
+            {
+              "TextOption": "2",
+              "Action": {
+                "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
+                "Text": "Дурак?"
+              }
+            }
+          ],
+          "DefaultAction": null
+        },
+        {
+          "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
+          "Text": "Абоба"
+        },
+        {
+          "$type": "AldaTech_api.BotCore.Redirect, AldaTech-api",
+          "ScreenId": 2
+        },
+        {
+          "$type": "AldaTech_api.BotCore.KeyBoard, AldaTech-api",
+          "Options": [
+            "Я",
+            "Не Я",
+            "кто?"
+          ],
+          "Text": "кто ты?"
         }
-      ],
-      "Id": 2
+      ]
+    },
+    {
+      "Id": 2,
+      "Actions": [
+        {
+          "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
+          "Text": "Это экран 2"
+        }
+      ]
     }
   ]
 }

@@ -7,10 +7,10 @@ using Newtonsoft.Json.Linq;
 
 namespace AldaTech_api.Controllers;
 
-public class Response
+public class BotResponse
 {
     public int BotId { get; set; }
-    public BotManager BotManager { get; set; }
+    public string BotCode { get; set; }
 }
 
 [Route("/api/[controller]")]
@@ -42,5 +42,22 @@ public class BotCodeController : Controller
         BotManager botCode = BotJsonStorage.ReadBotManager("./Data/1.json");
         return Content(json, "application/json");
     }
+    
+    [HttpPost("{id}")]
+    public async Task<ActionResult> WriteScript(BotResponse br)
+    {
+        Console.WriteLine(br.BotCode);
+        Console.WriteLine(br.BotId);
+
+        var botInfo = _dbCtx.Bots.FirstOrDefault(bot => bot.Id == br.BotId);
+        if (botInfo is null)
+            return NotFound();
+        
+        var bot = BotJsonStorage.ReadBotManagerFromString(br.BotCode);
+        BotJsonStorage.SaveBotManager(botInfo.BotManagerPath, bot);
+        
+        return Ok();
+    }
+    
     
 }

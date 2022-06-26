@@ -3,9 +3,7 @@ using Newtonsoft.Json;
 using Telegram.Bot.Types;
 
 namespace AldaTech_api.BotCore;
-[JsonConverter(typeof(JsonSubtypes), "Sound")]
-[JsonSubtypes.KnownSubType(typeof(Option), "Option")]
-[JsonSubtypes.KnownSubType(typeof(Gate), "Gate")]
+
 public class Option
 {
     [JsonProperty]
@@ -23,24 +21,19 @@ public class Option
 
 }
 
-
 public class Gate : IBotAction
 {
     private IBotClient _botClient;
     private long _chatId;
-    public string type { get => "Gate"; }
-    public List<Option> Options
-    {
-        get => _options; 
-    }
-    public  List<Option> _options;
+    
+    public List<Option> Options;
     public IBotAction? DefaultAction { get; set; }
 
     public Gate(IBotClient botClient, long chatId, List<Option> options)
     {
         _botClient = botClient;
         _chatId = chatId;
-        _options = options;
+        Options = options;
     }
 
     public async Task<ActionExecutionResult> Run(BotUserContext ctx)
@@ -61,7 +54,7 @@ public class Gate : IBotAction
         }
 
         Console.WriteLine("GATE GOT MESSAGE " + msg);
-        var option = _options.FirstOrDefault(o => o.IsCorrect(msg.Text));
+        var option = Options.FirstOrDefault(o => o.IsCorrect(msg.Text));
         //  Если юзер норм ответил 
         if (option is not null)
         {

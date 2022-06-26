@@ -18,24 +18,15 @@ public class BotRunnerController : Controller
 	
 	[HttpPost]
 	[Route("StartBot")]
-	public async Task<ActionResult> StartBot(int id)
-	{
-		return Ok(await _botRunner.StartBot(id));
-	}
 	// public async Task<ActionResult> StartBot(int id)
 	// {
-	// 	var botInfo = new Bot()
-	// 	{
-	// 	    BotManagerPath = "./Data/1.json", 
-	// 	    Id = 1, 
-	// 	    Title = "Тестовый бот",
-	// 	    IsRunning = false,
-	// 	    Token = "5001678276:AAH0MgT6aPNR7pkOGeD5eYFxEsJI3sgE4WA"
-	// 	        
-	// 	};
-	// 	var bc = new BotClientTelegram(botInfo);
-	// 	return Ok();
+	// 	return Ok(await _botRunner.StartBot(id));
 	// }
+	public async Task<ActionResult> StartBot(int id)
+	{
+		var bc = new BotManager();
+		return Ok();
+	}
 
 	
 	[HttpPost]

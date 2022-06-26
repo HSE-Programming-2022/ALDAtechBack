@@ -15,12 +15,11 @@ public class BotManager
 {
     private const string BotManagerPath = "./Data/bot.json";
     private IBotClient _botClient;
-    public List<Screen> Screens
-    {
-        get => _screens;
-    }
+    
     [JsonProperty]
-    private List<Screen> _screens;
+    private List<Screen> Screens;
+    
+    
     private long _chatId;
 
     private void SetDefaultBot()
@@ -45,31 +44,26 @@ public class BotManager
         actions.Add(new KeyBoard("кто ты?", keyboardOptions, _botClient, _chatId));
         // actions.Add(new TextMessage("Тест 3", _botClient, _chatId));
         
-        _screens.Add(new Screen(_botClient, _chatId, actions, 1));
+        Screens.Add(new Screen(_botClient, _chatId, actions, 1));
         actions = new List<IBotAction>();
         actions.Add(new TextMessage("Это экран 2", _botClient, _chatId));
-        _screens.Add(new Screen(_botClient, _chatId, actions, 2));
+        Screens.Add(new Screen(_botClient, _chatId, actions, 2));
     }
 
-    // public BotManager(List<Screen> screens)
-    // public BotManager(BotUserContext ctx)
-    // {
-    //     _botClient = botClient;
-    //
-    //     
-    //     _screens = new List<Screen>();
-    //     _botClient = ctx.BotClient;
-    //     _chatId = ctx.ChatId;
-    //     SetDefaultBot();
-    //     BotJsonStorage.SaveBotManager("./Data/kb.json", this);
-    // }
     
     public BotManager()
     {
-        _screens = new List<Screen>();
-        // SetDefaultBot();
-        // BotJsonStorage.SaveBotManager("./Data/kb.json", this);
+        Screens = new List<Screen>();
+        SetDefaultBot();
+        BotJsonStorage.SaveBotManager("./Data/kb.json", this);
     }
+    
+    // public BotManager()
+    // {
+    //     Screens = new List<Screen>();
+    //     // SetDefaultBot();
+    //     // BotJsonStorage.SaveBotManager("./Data/kb.json", this);
+    // }
 
     public async Task Run(BotUserContext ctx)
     {
@@ -77,7 +71,7 @@ public class BotManager
         _chatId = ctx.ChatId;
 
 
-        var screen = _screens.FirstOrDefault();
+        var screen = Screens.FirstOrDefault();
         while (screen is not null)
         {
             if (ctx.Ct.IsCancellationRequested)
@@ -97,7 +91,7 @@ public class BotManager
                     break;
                 case ActionExecutionStatus.SwitchWindow:
                     var redirect = executionResult.Redirect;
-                    screen = _screens.FirstOrDefault(x => x.Id == redirect.ScreenId);
+                    screen = Screens.FirstOrDefault(x => x.Id == redirect.ScreenId);
                     break;
                 case ActionExecutionStatus.Done:
                     await _botClient.SendTextMessageAsync(_chatId, "На этом все! Пишите еще");

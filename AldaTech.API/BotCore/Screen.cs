@@ -5,23 +5,20 @@ namespace AldaTech_api.BotCore;
 public class Screen
 {
     [JsonProperty]
-    public long Id { get; set; }
+    public long Id  { get; set; }
+    
+    [JsonProperty]
+    public List<IBotAction> Actions  { get; set; }
+    
+    
     private IBotClient _botClient;
     private long _chatId;
     
-    private string _text;
-    public List<IBotAction> Actions
-    {
-        get => _actions;
-    }
-    [JsonProperty]
-    List<IBotAction> _actions;
-
     public Screen(IBotClient botClient, long chatId, List<IBotAction> actions, long id)
     {
         _botClient = botClient;
         _chatId = chatId;
-        _actions = actions;
+        Actions = actions;
         Id = id;
     }
 
@@ -29,7 +26,7 @@ public class Screen
     {
         _botClient = ctx.BotClient;
         _chatId = ctx.ChatId; 
-        foreach (var action in _actions)
+        foreach (var action in Actions)
         {
             Console.WriteLine(ctx.Ct.IsCancellationRequested);
             if (ctx.Ct.IsCancellationRequested)
