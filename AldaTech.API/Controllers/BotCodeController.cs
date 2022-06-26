@@ -27,19 +27,17 @@ public class BotCodeController : Controller
     [HttpGet("{id}")]
     public async Task<ActionResult> GetScript(int id)
     {
-        // var bot = _dbCtx.Bots.FirstOrDefault(bot => bot.Id == id);
-        // if (bot is null)
-        //     return NotFound();
+        var botInfo = _dbCtx.Bots.FirstOrDefault(bot => bot.Id == id);
+        if (botInfo is null)
+            return NotFound();
         string json;
         
         
-        using (StreamReader r = new StreamReader("./Data/1.json"))
+        using (StreamReader r = new StreamReader(botInfo.BotManagerPath))
         {
             json = r.ReadToEnd();
         }
         
-        
-        BotManager botCode = BotJsonStorage.ReadBotManager("./Data/1.json");
         return Content(json, "application/json");
     }
     

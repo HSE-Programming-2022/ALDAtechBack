@@ -18,15 +18,15 @@ public class BotRunnerController : Controller
 	
 	[HttpPost]
 	[Route("StartBot")]
-	// public async Task<ActionResult> StartBot(int id)
-	// {
-	// 	return Ok(await _botRunner.StartBot(id));
-	// }
 	public async Task<ActionResult> StartBot(int id)
 	{
-		var bc = new BotManager();
-		return Ok();
+		return Ok(await _botRunner.StartBot(id));
 	}
+	// public async Task<ActionResult> StartBot(int id)
+	// {
+	// 	var bc = new BotManager();
+	// 	return Ok();
+	// }
 
 	
 	[HttpPost]
