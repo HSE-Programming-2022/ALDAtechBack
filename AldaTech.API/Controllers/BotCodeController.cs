@@ -40,8 +40,9 @@ public class BotCodeController : Controller
         
         return Content(json, "application/json");
     }
+
     
-    [HttpPost("{id}")]
+    [HttpPost]
     public async Task<ActionResult> WriteScript(BotResponse br)
     {
         Console.WriteLine(br.BotCode);
