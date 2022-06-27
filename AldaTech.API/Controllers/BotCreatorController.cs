@@ -44,6 +44,7 @@ public class BotCreatorController : Controller
         Console.WriteLine(4);
         await using (var fs = System.IO.File.Create(bot.BotManagerPath)) { }
         
+        
         DirectoryInfo d = new DirectoryInfo(@"./Data"); //Assuming Test is your Folder
         FileInfo[] Files = d.GetFiles(); //Getting Text files
         string str = "";
@@ -51,6 +52,8 @@ public class BotCreatorController : Controller
         {
             Console.WriteLine(file.Name);
         }
+        
+        
         bot.IsRunning = false;
         var newBot = await _dbCtx.AddAsync(bot);
         Console.WriteLine(6);

@@ -1,13 +1,20 @@
+using AldaTech_api.BotFactory;
 using Newtonsoft.Json;
 
 namespace AldaTech_api.BotCore;
 
 public class Redirect : IBotAction
 {
-    [JsonProperty]
-    public long ScreenId { get; set; }
+    public int ScreenId { get; set; }
 
-    public Redirect(long screenId)
+    public Redirect(BotComponentData redirectData)
+    {
+        if (redirectData.RedirectScreenId is not null)
+        {
+            ScreenId = (int) redirectData.RedirectScreenId;
+        }
+    }
+    public Redirect(int screenId)
     {
         ScreenId = screenId;
     }

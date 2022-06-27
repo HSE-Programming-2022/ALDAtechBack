@@ -1,4 +1,5 @@
 using System.Security.Cryptography.X509Certificates;
+using AldaTech_api.BotFactory;
 using AldaTech_api.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Query.Internal;
@@ -26,19 +27,25 @@ public class BotClientTelegram : IBotClient
     private List<MessageListener> _listeners;
     private List<BotManager> _botManagers;
     private string _botManagerPath = "./Data/bot.json";
+
+
+    public BotData BotData; 
+    
     public int Id { get; private set; }
-    public BotClientTelegram(Bot botInfo)
+    public BotClientTelegram(Bot botInfo, BotData botData)
     {
         
         _botInfo = botInfo;
         _token = botInfo.Token;
         _botManagerPath = botInfo.BotManagerPath;
         Id = botInfo.Id;
-        
+        BotData = botData;
         _botClient = new Telegram.Bot.TelegramBotClient(_token);
         _cts = new CancellationTokenSource();
         _botManagers = new List<BotManager>();
 
+        
+        
         _receiverOptions = new ReceiverOptions
         {
             AllowedUpdates = Array.Empty<UpdateType>() // receive all update types
@@ -81,11 +88,6 @@ public class BotClientTelegram : IBotClient
     
     async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
-        Console.WriteLine(_cts.Token == cancellationToken);
-        Console.WriteLine("Handle updates " + _cts.IsCancellationRequested);
-        Console.WriteLine("Handle updates " + cancellationToken.IsCancellationRequested);
-        Console.WriteLine("Handle updates " + _cts.Token.IsCancellationRequested);
-        Console.WriteLine("Handle updates " + _listeners.Count);
         // Only process Message updates: https://core.telegram.org/bots/api#message
         if (update.Type != UpdateType.Message)
             return;
@@ -96,7 +98,7 @@ public class BotClientTelegram : IBotClient
             return;
 
         Message message = update.Message;
-        Console.WriteLine("Got message" + message.Text);
+        Console.WriteLine("Got message " + message.Text);
         foreach (var listener in _listeners)
         {
             if (listener.ListensTo(message))
@@ -109,8 +111,11 @@ public class BotClientTelegram : IBotClient
         }
         // BotUserContext ctx = new BotUserContext(){BotClient = this, ChatId = message.Chat.Id, Ct = _cts.Token};
         // var bot = new BotManager(ctx);
-        
-        var bot = BotJsonStorage.ReadBotManager(_botManagerPath);
+        foreach (var screen in BotData.Screens)
+        {
+            Console.WriteLine(screen.Id);
+        }
+        var bot = new BotManager(BotData);
         BotUserContext ctx = new BotUserContext(){BotClient = this, ChatId = message.Chat.Id, Ct = _cts.Token};
         bot.Run(ctx);
         _botManagers.Add(bot);
@@ -133,7 +138,8 @@ public class BotClientTelegram : IBotClient
     {
         await _botClient.SendTextMessageAsync(
             chatId: chatId,
-            text: text
+            text: text,
+            replyMarkup: new ReplyKeyboardRemove()
             );
     }
     

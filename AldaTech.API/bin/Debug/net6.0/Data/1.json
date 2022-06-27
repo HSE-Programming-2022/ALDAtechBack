@@ -1,56 +1,114 @@
 {
-  "_screens": [
+  "Screens": [
     {
-      "_actions": [
+      "Id": 1,
+      "Actions": [
         {
           "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-          "_text": "Сколько будет 2 * 2?"
+          "Text": "Сколько будет 2 * 2?"
         },
         {
           "$type": "AldaTech_api.BotCore.Gate, AldaTech-api",
-          "_options": [
+          "Options": [
             {
               "TextOption": "4",
               "Action": {
                 "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-                "_text": "Жесть ты умный"
+                "Text": "Жесть ты умный"
               }
             },
             {
               "TextOption": "2",
               "Action": {
                 "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-                "_text": "Дурак?"
-              }
-            },
-            {
-              "TextOption": "5",
-              "Action": {
-                "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-                "_text": "5?"
+                "Text": "Дурак?"
               }
             }
-          ]
+          ],
+          "DefaultAction": null
         },
         {
           "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-          "_text": "Абоба"
+          "Text": "Абоба"
         },
         {
           "$type": "AldaTech_api.BotCore.Redirect, AldaTech-api",
           "ScreenId": 2
+        },
+        {
+          "$type": "AldaTech_api.BotCore.KeyBoard, AldaTech-api",
+          "Options": [
+            "Я",
+            "Не Я",
+            "кто?"
+          ],
+          "Text": "кто ты?"
         }
-      ],
-      "Id": 1
+      ]
     },
     {
-      "_actions": [
+      "Id": 2,
+      "Actions": [
         {
           "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-          "_text": "Это экран 2"
+          "Text": "Это экран 2"
         }
-      ],
-      "Id": 2
+      ]
+    },
+    {
+      "Id": 1,
+      "Actions": [
+        {
+          "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
+          "Text": "Сколькобудет2*2?"
+        },
+        {
+          "$type": "AldaTech_api.BotCore.Gate, AldaTech-api",
+          "Options": [
+            {
+              "TextOption": "4",
+              "Action": {
+                "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
+                "Text": "Жестьтыумный"
+              }
+            },
+            {
+              "TextOption": "2",
+              "Action": {
+                "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
+                "Text": "Дурак?"
+              }
+            }
+          ],
+          "DefaultAction": null
+        },
+        {
+          "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
+          "Text": "Абоба"
+        },
+        {
+          "$type": "AldaTech_api.BotCore.Redirect, AldaTech-api",
+          "ScreenId": 2
+        },
+        {
+          "$type": "AldaTech_api.BotCore.KeyBoard, AldaTech-api",
+          "Options": [
+            "Я",
+            "НеЯ",
+            "кто?"
+          ],
+          "Text": "ктоты?"
+        }
+      ]
+    },
+    {
+      "Id": 2,
+      "Actions": [
+        {
+          "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
+          "Text": "Этоэкран3"
+        }
+      ]
     }
   ]
 }

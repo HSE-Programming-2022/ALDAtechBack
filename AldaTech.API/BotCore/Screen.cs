@@ -1,18 +1,43 @@
+using AldaTech_api.BotFactory;
 using Newtonsoft.Json;
 
 namespace AldaTech_api.BotCore;
 
 public class Screen
 {
-    [JsonProperty]
     public long Id  { get; set; }
-    
-    [JsonProperty]
     public List<IBotAction> Actions  { get; set; }
     
     
     private IBotClient _botClient;
     private long _chatId;
+    
+    public Screen(ScreenData screenData)
+    {
+        Id = screenData.Id;
+        Actions = new List<IBotAction>();
+        foreach (var component in screenData.Components)
+        {
+            IBotAction botAction = null;
+            if (component.Type == "TextMessage")
+            {
+                botAction = new TextMessage(component);
+            }
+            else if (component.Type == "Gate")
+            {
+                botAction = new Gate(component);
+            }
+            else if (component.Type == "KeyBoard")
+            {
+                botAction = new KeyBoard(component);
+            }
+            else if (component.Type == "Redirect")
+            {
+                botAction = new Redirect(component);
+            }
+            Actions.Add(botAction);
+        }
+    }
     
     public Screen(IBotClient botClient, long chatId, List<IBotAction> actions, long id)
     {

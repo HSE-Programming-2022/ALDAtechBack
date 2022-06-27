@@ -1,5 +1,6 @@
 using System.Xml;
 using AldaTech_api.BotCore;
+using AldaTech_api.BotFactory;
 using AldaTech_api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -41,22 +42,33 @@ public class BotCodeController : Controller
         return Content(json, "application/json");
     }
 
+    //
+    // [HttpPost]
+    // public async Task<ActionResult> WriteScript(BotResponse br)
+    // {
+    //     Console.WriteLine(br.BotCode);
+    //     Console.WriteLine(br.BotId);
+    //
+    //     var botInfo = _dbCtx.Bots.FirstOrDefault(bot => bot.Id == br.BotId);
+    //     if (botInfo is null)
+    //         return NotFound();
+    //     
+    //     var bot = BotJsonStorage.ReadBotManagerFromString(br.BotCode);
+    //     BotJsonStorage.SaveBotManager(botInfo.BotManagerPath, bot);
+    //     
+    //     return Ok();
+    // }
     
     [HttpPost]
-    public async Task<ActionResult> WriteScript(BotResponse br)
+    public async Task<ActionResult> WriteScript(BotData botData)
     {
-        Console.WriteLine(br.BotCode);
-        Console.WriteLine(br.BotId);
-
-        var botInfo = _dbCtx.Bots.FirstOrDefault(bot => bot.Id == br.BotId);
+        var botInfo = _dbCtx.Bots.FirstOrDefault(bot => bot.Id == botData.BotId);
         if (botInfo is null)
             return NotFound();
         
-        var bot = BotJsonStorage.ReadBotManagerFromString(br.BotCode);
-        BotJsonStorage.SaveBotManager(botInfo.BotManagerPath, bot);
+        BotJsonStorage.WriteBotData(botInfo.BotManagerPath, botData);
         
         return Ok();
     }
-    
     
 }

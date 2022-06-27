@@ -1,3 +1,4 @@
+using AldaTech_api.BotFactory;
 using Newtonsoft.Json;
 
 namespace AldaTech_api.BotCore;
@@ -6,8 +7,7 @@ public class TextMessage : IBotAction
 {
     private IBotClient _botClient;
     private long _chatId;
-
-    [JsonProperty]
+    
     public string Text;
     
     public TextMessage(string text, IBotClient botClient, long chatId)
@@ -16,6 +16,12 @@ public class TextMessage : IBotAction
         _botClient = botClient;
         _chatId = chatId;
     }
+    
+    public TextMessage(BotComponentData botComponent)
+    {
+        Text = botComponent.Text;
+    }
+    
     public async Task<ActionExecutionResult> Run(BotUserContext ctx)
     {
         _botClient = ctx.BotClient;

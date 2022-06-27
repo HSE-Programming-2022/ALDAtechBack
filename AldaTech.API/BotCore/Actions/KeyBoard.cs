@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using AldaTech_api.BotFactory;
+using Newtonsoft.Json;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace AldaTech_api.BotCore;
@@ -13,7 +14,20 @@ public class KeyBoard : IBotAction
     
     [JsonProperty]
     public string Text;
-    
+
+    public KeyBoard(BotComponentData keyboardData)
+    {
+        Text = keyboardData.Text;
+        Options = new List<string>();
+        foreach (var buttonData in keyboardData.Children)
+        {
+            if (buttonData.Type == "Button") 
+            {
+                Console.WriteLine(buttonData.ButtonText);
+                Options.Add(buttonData.ButtonText);
+            }
+        }
+    }
     public KeyBoard(string text, List<string> options, IBotClient botClient, long chatId)
     {
         Text = text;

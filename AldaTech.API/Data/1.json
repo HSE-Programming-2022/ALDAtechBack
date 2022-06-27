@@ -1,112 +1,86 @@
-{
-  "Screens": [
+{"BotId": 5,
+  "Screens":
+  [
     {
-      "Id": 1,
-      "Actions": [
+      "Id":1,
+      "Components":[
         {
-          "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-          "Text": "Сколько будет 2 * 2?"
+          "Type":"TextMessage",
+          "Text":"Сообщение 1"
         },
         {
-          "$type": "AldaTech_api.BotCore.Gate, AldaTech-api",
-          "Options": [
+          "Type":"TextMessage",
+          "Text":"Сообщение 2"
+        },
+        {
+          "Type":"KeyBoard",
+          "Text": "Вопрос",
+          "Children":[
             {
-              "TextOption": "4",
-              "Action": {
-                "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-                "Text": "Жесть ты умный"
-              }
+              "Type":"Button",
+              "ButtonText":"Кнопка 1"
             },
             {
-              "TextOption": "2",
-              "Action": {
-                "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-                "Text": "Дурак?"
-              }
+              "Type":"Button",
+              "ButtonText":"Кнопка 2"
+            },
+            {
+              "Type":"Button",
+              "ButtonText":"Кнопка 3"
             }
-          ],
-          "DefaultAction": null
+          ]
         },
         {
-          "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-          "Text": "Абоба"
+          "Type":"Gate",
+          "Children":[
+            {
+              "Type":"GateOption",
+              "GateOptionText":"Кнопка 1",
+              "Children": [
+                {
+                  "Type":"TextMessage",
+                  "Text":"Вы выбрали 1"
+                }
+              ]
+            },
+            {
+              "Type":"GateOption",
+              "GateOptionText":"Кнопка 2",
+              "Children": [
+                {
+                  "Type":"TextMessage",
+                  "Text":"Вы выбрали 2"
+                }
+              ]
+            },
+            {
+              "Type":"GateOption",
+              "GateOptionText":"Кнопка 3",
+              "Children": [
+                {
+                  "Type":"TextMessage",
+                  "Text":"Вы выбрали 3"
+                }
+              ]
+            }
+          ]
         },
         {
-          "$type": "AldaTech_api.BotCore.Redirect, AldaTech-api",
-          "ScreenId": 2
-        },
-        {
-          "$type": "AldaTech_api.BotCore.KeyBoard, AldaTech-api",
-          "Options": [
-            "Я",
-            "Не Я",
-            "кто?"
-          ],
-          "Text": "кто ты?"
+          "Type": "Redirect",
+          "RedirectScreenId": "2"
         }
       ]
     },
     {
       "Id": 2,
-      "Actions": [
+      "Components":[
         {
-          "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-          "Text": "Это экран 2"
-        }
-      ]
-    },
-    {
-      "Id": 1,
-      "Actions": [
-        {
-          "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-          "Text": "Сколькобудет2*2?"
+          "Type":"TextMessage",
+          "Text":"Сообщение 1"
         },
         {
-          "$type": "AldaTech_api.BotCore.Gate, AldaTech-api",
-          "Options": [
-            {
-              "TextOption": "4",
-              "Action": {
-                "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-                "Text": "Жестьтыумный"
-              }
-            },
-            {
-              "TextOption": "2",
-              "Action": {
-                "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-                "Text": "Дурак?"
-              }
-            }
-          ],
-          "DefaultAction": null
-        },
-        {
-          "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-          "Text": "Абоба"
-        },
-        {
-          "$type": "AldaTech_api.BotCore.Redirect, AldaTech-api",
-          "ScreenId": 2
-        },
-        {
-          "$type": "AldaTech_api.BotCore.KeyBoard, AldaTech-api",
-          "Options": [
-            "Я",
-            "НеЯ",
-            "кто?"
-          ],
-          "Text": "ктоты?"
-        }
-      ]
-    },
-    {
-      "Id": 2,
-      "Actions": [
-        {
-          "$type": "AldaTech_api.BotCore.TextMessage, AldaTech-api",
-          "Text": "Этоэкран3"
+          "Type":"TextMessage",
+          "Text":"Сообщение 2"
         }
       ]
     }

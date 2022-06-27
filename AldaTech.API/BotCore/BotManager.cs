@@ -1,3 +1,4 @@
+using AldaTech_api.BotFactory;
 using Newtonsoft.Json;
 using Telegram.Bot.Types;
 
@@ -29,9 +30,9 @@ public class BotManager
         actions.Add(new TextMessage("Сколько будет 2 * 2?", _botClient, _chatId));
         
         
-        var options = new List<Option>();
-        options.Add(new Option("4", new TextMessage("Жесть ты умный", _botClient, _chatId)));
-        options.Add(new Option("2", new TextMessage("Дурак?", _botClient, _chatId)));
+        var options = new List<GateOption>();
+        options.Add(new GateOption("4", new TextMessage("Жесть ты умный", _botClient, _chatId)));
+        options.Add(new GateOption("2", new TextMessage("Дурак?", _botClient, _chatId)));
 
 
         actions.Add(new Gate(_botClient, _chatId, options));
@@ -50,12 +51,20 @@ public class BotManager
         Screens.Add(new Screen(_botClient, _chatId, actions, 2));
     }
 
-    
-    public BotManager()
+    // public BotManager()
+    // {
+    //     Screens = new List<Screen>();
+    //     SetDefaultBot();
+    //     BotJsonStorage.SaveBotManager("./Data/kb.json", this);
+    // }
+    public BotManager(BotData botData)
     {
         Screens = new List<Screen>();
-        SetDefaultBot();
-        BotJsonStorage.SaveBotManager("./Data/kb.json", this);
+        foreach (var screenData in botData.Screens)
+        {
+            var newScreen = new Screen(screenData);
+            Screens.Add(newScreen);
+        }
     }
     
     // public BotManager()

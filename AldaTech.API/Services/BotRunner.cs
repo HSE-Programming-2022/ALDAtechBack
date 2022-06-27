@@ -61,8 +61,10 @@ public class BotRunner : IBotRunner
         
             if (botInfo.IsRunning)
                 return "Already running";
-        
-            var bot = new BotClientTelegram(botInfo);
+
+            var botData = BotJsonStorage.ReadBotData(botInfo.BotManagerPath);
+                
+            var bot = new BotClientTelegram(botInfo, botData);
             _botClients.Add(bot);
             botInfo.IsRunning = true;
             context.SaveChanges();
