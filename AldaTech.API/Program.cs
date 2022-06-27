@@ -15,6 +15,7 @@ builder.Services.AddCors(options =>
         {
             policy.WithOrigins("127.0.0.1:8080",
                 "http://localhost:8080");
+            policy.AllowAnyHeader();
         });
 });
 // Подключаем БД

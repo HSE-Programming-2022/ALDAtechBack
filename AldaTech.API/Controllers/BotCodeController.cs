@@ -33,7 +33,6 @@ public class BotCodeController : Controller
             return NotFound();
         string json;
         
-        
         using (StreamReader r = new StreamReader(botInfo.BotManagerPath))
         {
             json = r.ReadToEnd();
@@ -60,8 +59,9 @@ public class BotCodeController : Controller
     // }
     
     [HttpPost]
-    public async Task<ActionResult> WriteScript(BotData botData)
+    public async Task<ActionResult> WriteScript([FromBody]BotData botData)
     {
+        Console.WriteLine(botData.BotId);
         var botInfo = _dbCtx.Bots.FirstOrDefault(bot => bot.Id == botData.BotId);
         if (botInfo is null)
             return NotFound();
