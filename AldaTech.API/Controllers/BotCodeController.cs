@@ -59,7 +59,7 @@ public class BotCodeController : Controller
     // }
     
     [HttpPost]
-    public async Task<ActionResult> WriteScript([FromBody]BotData botData)
+    public async Task<ActionResult> WriteScript(BotData botData)
     {
         Console.WriteLine(botData.BotId);
         var botInfo = _dbCtx.Bots.FirstOrDefault(bot => bot.Id == botData.BotId);
