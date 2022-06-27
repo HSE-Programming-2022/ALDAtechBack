@@ -38,8 +38,8 @@
               "GateOptionText":"Кнопка 1",
               "Children": [
                 {
-                  "Type":"TextMessage",
-                  "Text":"Вы выбрали 1"
+                  "Type": "Redirect",
+                  "RedirectScreenId": "2"
                 }
               ]
             },
@@ -48,8 +48,8 @@
               "GateOptionText":"Кнопка 2",
               "Children": [
                 {
-                  "Type":"TextMessage",
-                  "Text":"Вы выбрали 2"
+                  "Type": "Redirect",
+                  "RedirectScreenId": "2"
                 }
               ]
             },
@@ -58,8 +58,8 @@
               "GateOptionText":"Кнопка 3",
               "Children": [
                 {
-                  "Type":"TextMessage",
-                  "Text":"Вы выбрали 3"
+                  "Type": "Redirect",
+                  "RedirectScreenId": "2"
                 }
               ]
             }
